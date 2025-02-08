@@ -16,10 +16,6 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-# Initialize environment variables
-env = environ.Env()
-environ.Env.read_env(env_file='.env')
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -129,6 +125,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env(env_file='.env')
 
 SECRET_KEY = env('SECRET_KEY', default='unsafe-secret-key')
 DEBUG = env.bool('DEBUG', default=True)
